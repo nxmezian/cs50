@@ -1,0 +1,11 @@
+sort1 uses: bubble sort
+
+How do you know?: the numbers bubble up
+
+sort2 uses: merge sort
+
+How do you know?:  slow for small, sorted sets, but fast for large, unsorted sets
+
+sort3 uses: selection sort
+
+How do you know?: it handles small, sorted sets fast, but takes a long time for long, unsorted sets
