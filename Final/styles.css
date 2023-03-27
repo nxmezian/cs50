@@ -1,126 +1,155 @@
+body{
+  background-color: black;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 *{
-    font-family: sans-serif;
+  font-family: sans-serif;
 }
 
-.screenshots{
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: 250px;
-    margin-top: 500px;
+ul {
+  display: inline;
+  box-sizing:border-box;
+  border-width:5px;
+  border-style:solid;
+  border-radius: 25px;
+  border-color:black;
 }
 
-.video{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+li{
+  display: inline;
+  background-color: black;
 }
 
-#majora{
-  background-image: url("majora.jpg");
+img {
+  max-width: 100%; height: auto;
+}
+
+#logo{
+  position: absolute;
+  left: 42%;
+  top: 10%;
+}
+
+#home{
+  height: 1000px;
+  background-image: url("zelda.jpg");
+  background-size: cover; 
+}
+
+#history{
+  height: 1000px;
+  background-image: url("history.jpg");
   background-size: cover; 
 }
 
 #botw{
-    background-image: url("zelda.jpg");
-    background-size: cover; 
-   }
+  height: 1000px;
+  background-image: url("botw.jpg");
+  background-size: cover; 
+ }
 
-#ocarina{
-    background-image: url("ocarina.jpg");
-    background-size: cover; 
-  
+#skyward{
+  height: 1000px;
+  background-image: url("skyward1.jpg");
+  background-size: cover; 
+}
+
+#twilight{
+  height: 1000px;
+  background-image: url("twilight.jpg");
+    background-size: cover;
   }
 
 #windwaker{
+  height: 1000px;
   background-image: url("windwaker.jpg");
   background-size: cover;
+}
+
+#majora{
+  height: 1000px;
+  background-image: url("majora.jpg");
+  background-size: cover; 
+}
+
+#ocarina{
+  height: 1000px;
+  background-image: url("ocarina.jpg");
+  background-size: cover; 
+}
+
+#past{
+  height: 1000px;
+  background-image: url("past.jpg");
+  background-size: cover; 
+}
+
+#original{
+  height: 1000px;
+  background-image: url("original.jpg");
+  background-size: cover; 
 }
 
 #sign-up{
     text-align: center;
 }
 
-.container{
-    border-style: solid;
-    border-width: 3px; /* 5px top and bottom, 20px on the sides */
-    border-radius: 25px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background-color: aqua;
-    padding-bottom: 25px;
-    padding-left: 10px;
-    padding-right: 10px;
-    background-image: url("zelda.jpg");
-}
-
-/* The sidebar menu */
-.sidebar {
-  height: 100%; /* 100% Full-height */
-  width: 0; /* 0 width - change this with JavaScript */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Stay on top */
+#main-nav {
+  padding: 5px;
+  text-align: center;
+  width: 100%;
+  position: fixed;
   top: 0;
-  left: 0;
-  background-color: #111; /* Black*/
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 60px; /* Place content 60px from the top */
-  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
 }
 
-/* The sidebar links */
-.sidebar a {
-  padding: 8px 8px 8px 32px;
+nav a {
+  color: gold;
   text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
 }
 
-/* When you mouse over the navigation links, change their color */
-.sidebar a:hover {
-  color: #f1f1f1;
-}
-
-/* Position and style the close button (top right corner) */
-.sidebar .closebtn {
-  position: absolute;
+#main-nav.sticky {
+  position: fixed;
   top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
 }
 
-/* The button used to open the sidebar */
-.openbtn {
-  
-  font-size: 20px;
-  cursor: pointer;
-  background-color: red;
-  color: white;
-  border: none;
-  background-image: url("triforce.jpg");
-  background-size: contain;
-  background-repeat: no-repeat;
+a:active {
+  color: blue;
 }
 
-.openbtn:hover {
-  background-color: #444;
+nav a.active {
+  color: #1e1e1e;
+  background: white;
 }
 
-/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-#main {
-  transition: margin-left .5s; /* If you want a transition effect */
-  padding: 20px;
+@media
+(prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-  .sidebar {padding-top: 15px;}
-  .sidebar a {font-size: 18px;}
+@media screen and (max-width: 800px) {
+  body {
+    font-size: 14px;
+  }
 }
 
-  
+@media screen and (max-width: 600px) {
+  body {
+    font-size: 11px;
+  }
+}
+
+/* added section styles and class for scrolling */
+section {
+  height: 100vh;
+}
+
+.scroll {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+}

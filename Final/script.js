@@ -1,30 +1,15 @@
-function doSomething(){
-    document.getElementById("hidden").style.display="block";
-}
 
-var modal = document.getElementById('id01');
+  window.addEventListener('scroll', function() {
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    var parallaxElements = document.querySelectorAll('.parallax');
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
+    for (var i = 0; i < parallaxElements.length; i++) {
+      var parallaxElement = parallaxElements[i];
+      var parallaxOffset = parallaxElement.offsetTop - window.innerHeight;
+      var parallaxScrollTop = scrollTop - parallaxOffset;
 
-
-function openNav() {
-  document.getElementById("mySidebar").style.width = "250px";
-  document.getElementById("main").style.marginLeft = "250px";
-}
-
-function openNav() {
-  document.getElementById("mySidebar").style.width = "250px";
-  document.getElementById("main").style.marginLeft = "250px";
-}
-
-/* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
-function closeNav() {
-  document.getElementById("mySidebar").style.width = "0";
-  document.getElementById("main").style.marginLeft = "0";
-}
-
+      if (parallaxScrollTop > 0 && parallaxScrollTop < window.innerHeight) {
+        parallaxElement.style.backgroundPositionY = -(parallaxScrollTop / 2) + 'px';
+      }
+    }
+  });
