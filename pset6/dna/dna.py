@@ -1,44 +1,50 @@
-import csv
 import sys
-
+import csv
 
 def main():
 
-    # TODO: Check for command-line usage
+    # Check for command-line usage
     if len(sys.argv) != 3:
-        print("Usage: python dna.py data.csv sequence.txt")
-        return 1
+        return(print("Usage: python dna.py *.csv *.txt"))
 
-    # TODO: Read database file into a variable
-    with open(sys.argv[1], 'r') as csvfile:
-        reader = csv.DictReader(csvfile)
-        lines_read = reader.fieldnames
+    #Variable for the profiles in the database
+    profiles = []
+    strings = []
 
-    # TODO: Read DNA sequence file into a variable
-    dna = open(sys.argv[2], "r").readlines()
+    # Read database file into a variable
+    with open(sys.argv[1]) as file:
+        reader = csv.DictReader(file)
+        strings = reader.fieldnames[1:]
+        for row in reader:
+            profiles.append(row)
 
-    # TODO: Find longest match of each STR in DNA sequence
-    readings = {}
+    # Read DNA sequence file into a variable
+    with open(sys.argv[2]) as file:
+        dna = file.read()
 
+    # List of subsequences to check
+    dna_sequence = list(profiles[0].keys())[1:]
 
-    for subsequence in subsequences:
-        readings[subsequence] = longest_match(dna, subsequence)
+    # Initialize a dictionary that keeps track of the outcomes to be tested
+    outcomes = {}
 
-    # TODO: Check database for matching profiles
-    for name in reader:
-        match = 0
-        for subsequence in subsequences:
-            if int(name[subsequence]) == readings[subsequence]:
-                match += 1
-        if match == len(subsequence):
-            print(name["name"])
-            return 0
+    for sub in dna_sequence:
+        outcomes[sub] = longest_match(dna, sub)
 
-    print("No match")
-    return 0
+    # Check database for matching profiles
+    for profile in profiles:
 
+        #initialize count to 0
+        count = 0
+        for sub in dna_sequence:
+            if int(profile[sub]) == outcomes[sub]:
+                #every time a match is made, the count increases
+                count += 1
 
+        if count == len(dna_sequence):
+            return print(profile["name"])
 
+    return print("No match")
 
 def longest_match(sequence, subsequence):
     """Returns length of longest run of subsequence in sequence."""
@@ -78,4 +84,5 @@ def longest_match(sequence, subsequence):
     return longest_run
 
 
-main()
+if __name__ == "__main__":
+    main()
